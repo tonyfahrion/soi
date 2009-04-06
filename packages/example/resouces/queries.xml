@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE soiqueries SYSTEM "soiqueries.dtd">
+
+<queries>
+  <storage type="mysql">
+    <query name="userdata" cacheable="true" section="get">
+      <statement><![CDATA[SELECT * FROM user WHERE ID = %{username}]]></statement>
+    </query>
+  </storage>
+</queries>
