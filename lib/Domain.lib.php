@@ -19,8 +19,7 @@ along with SOI. If not, see <http://www.gnu.org/licenses/>.
 class Domain
 {
   /**
-  * TODO
-  * write explodeDomain - which explodes the givven domain into subdomain, second-lvl and top-lvl
+  * Explodes the givven domain into domain-parts (tld, sld, subdomains)
   */
   static function explodeDomain(&$domain, &$into)
   {
@@ -28,19 +27,16 @@ class Domain
     $l = count($parts) -1;
     
     if( $parts < 1 )
-    return false;
+      return false;
     
     $into['tld']=$parts[$l--];
     $into['sld']=$parts[$l--];
     while( $l >= 0 )
-    $into[ 'sub'.($l+1) ]=$parts[$l--];
+      $into[ 'sub'.($l+1) ]=$parts[$l--];
     return true;
   }
   
   /**
-  * TODO
-  * This should be moved to another lib like URI or HTTP or String :)
-  * 
   * Check the return-value with === true, because there is the posibility that this function returns 0 (zero)
   * @return should return if the givven domain is valid
   */
@@ -48,7 +44,7 @@ class Domain
   {
     $splitted=array();
     if( !Domain::explodeDomain($domain, $splitted) )
-    return false;
+      return false;
     
     foreach($splitted as $key => $element)
     if( !preg_match('/^([-_a-z])$/i', $element) )
