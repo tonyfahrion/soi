@@ -16,13 +16,16 @@ You should have received a copy of the GNU General Public License
 along with SOI. If not, see <http://www.gnu.org/licenses/>.
 */
 
+define('CLI_COLOR_GREEN', "\033[0;32m");
+define('CLI_COLOR_WHITE', "\033[0;37m");
+
 class CLI
 {
   static function getCliLine($message)
   {
-    echo $message.": \033[0;32m"; // green for input
+    echo $message.": ".CLI_COLOR_GREEN; // green for input
     $y = trim(fgets(STDIN));
-    echo "\033[0;37m";
+    echo CLI_COLOR_WHITE;
     return $y;
   }
   
